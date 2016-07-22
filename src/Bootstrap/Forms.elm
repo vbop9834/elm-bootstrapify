@@ -1,6 +1,10 @@
 module Bootstrap.Forms exposing
   (
-   formHorizontal, FormGroupOption, formLabel, formInput, formTextArea
+   formHorizontal,
+   FormGroupOption(FormGroupDefault, FormGroupSmall, FormGroupLarge),
+   formLabel,
+   formInput,
+   formTextArea
   )
 
 {-| Bootstrap functions pertainig to forms

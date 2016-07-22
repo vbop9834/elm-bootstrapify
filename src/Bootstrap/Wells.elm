@@ -1,6 +1,7 @@
 module Bootstrap.Wells exposing
   (
-   WellOption, well
+   WellOption(WellNormal,WellSmall,WellLarge),
+   well
   )
 
 {-| Functions for generating bootstrap wells

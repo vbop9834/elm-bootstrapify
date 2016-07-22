@@ -1,7 +1,13 @@
 module Bootstrap.Navbar exposing
   (
-   NavbarType, navbar, navbarHeader, navbarBrand,
-   NavbarListAdjustment, NavbarPillsOptions, NavbarOptions, navbarList
+   NavbarType(DefaultNavbar, InverseNavbar, FormNavbar),
+   navbar,
+   navbarHeader,
+   navbarBrand,
+   NavbarListAdjustment(NavbarDefault,NavbarRight,NavbarLeft,NavbarJustified),
+   NavbarPillsOptions(PillsNotStacked, PillsStacked),
+   NavbarOptions(NavbarNav, NavbarTabs, NavbarPills),
+   navbarList
   )
 
 {-| Functions for generating Bootstrap navbar elements

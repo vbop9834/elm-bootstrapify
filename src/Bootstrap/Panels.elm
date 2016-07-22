@@ -1,7 +1,11 @@
 module Bootstrap.Panels exposing
   (
-   PanelType, panelGroup, panel, panelHeading, panelBody,
-   PanelHeadingTitleType
+   PanelType(NormalPanel,PrimaryPanel,SuccessPanel,InfoPanel,WarningPanel,DangerPanel),
+   panelGroup,
+   panel,
+   panelHeading,
+   panelBody,
+   PanelHeadingTitleType(DefaultTitle,PanelH1,PanelH2,PanelH3,PanelH4,PanelH5)
   )
 
 {-| Functions for generating bootstrap panels

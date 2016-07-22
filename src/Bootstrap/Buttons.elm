@@ -1,6 +1,8 @@
 module Bootstrap.Buttons exposing
   (
-   ButtonOption, ButtonSizeModifier, btn
+   ButtonOption(BtnDefault, BtnPrimary, BtnSuccess, BtnWarning, BtnInfo, BtnDanger),
+   ButtonSizeModifier(BtnLarge, BtnBlock, BtnSmall, BtnExtraSmall, NavbarBtn),
+   btn
   )
 
 {-| Functions for bootstrap buttons

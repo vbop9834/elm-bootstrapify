@@ -1,7 +1,8 @@
 module Bootstrap.Grid exposing
  (
   containerFluid, container, row, column,
-  ColumnSize, ColumnType
+  ColumnSize(One,Two,Three,Four,Five,Six,Seven,Eight,Nine,Ten,Eleven,Twelve),
+  ColumnType(ExtraSmall,Small,Medium,Large)
  )
 
 {-| Bootstrap grid functions for generating html
