@@ -5,6 +5,7 @@ import Html.Attributes exposing (..)
 
 import String
 
+--this is for being able to write UI Automation selectors efficiently
 automationTag : String -> String -> Attribute msg
 automationTag tag value =
   let
@@ -12,6 +13,8 @@ automationTag tag value =
   in
     attribute tag value
 
+--Grid
+----------------------------------------------------------------------------
 containerFluid : List (Html msg) -> Html msg
 containerFluid htmlList =
   div [ class "container-fluid" ] htmlList
@@ -83,6 +86,11 @@ column columns htmlList =
   in
     div [ class columnClasses ] htmlList
 
+----------------------------------------------------------------------------
+
+--Forms
+----------------------------------------------------------------------------
+
 formHorizontal : List (Html msg) -> Html msg
 formHorizontal htmlList =
   div [ class "form-horizontal" ] htmlList
@@ -111,6 +119,11 @@ formTextArea attributes htmlList =
     attributes = class "form-control" :: attributes
   in
     textarea attributes htmlList
+
+----------------------------------------------------------------------------
+
+--Buttons
+----------------------------------------------------------------------------
 
 type ButtonOption =
     BtnDefault
@@ -164,6 +177,11 @@ btn btnOption btnModifiers attributes htmlList =
     in
       button attributes htmlList
 
+----------------------------------------------------------------------------
+
+--List group
+----------------------------------------------------------------------------
+
 listGroup : List (Html msg) -> Html msg
 listGroup htmlList =
   div [ class "list-group" ] htmlList
@@ -173,6 +191,11 @@ listGroupItem attributes htmlList =
   let attributes = class "list-group-item" :: attributes
   in
     a attributes htmlList
+
+----------------------------------------------------------------------------
+
+--Panels
+----------------------------------------------------------------------------
 
 type PanelType =
     Normal
@@ -207,11 +230,11 @@ panel panelType attributes htmlList =
 
 type PanelHeadingTitleType =
     DefaultTitle String
-  | H1 String
-  | H2 String
-  | H3 String
-  | H4 String
-  | H5 String
+  | PanelH1 String
+  | PanelH2 String
+  | PanelH3 String
+  | PanelH4 String
+  | PanelH5 String
 
 panelHeading : PanelHeadingTitleType -> List (Attribute msg) -> List (Html msg) -> Html msg
 panelHeading panelHeadingTitleType attributes htmlList =
@@ -219,11 +242,11 @@ panelHeading panelHeadingTitleType attributes htmlList =
     getPanelHeadingTitleHtml panelHeadingTitleType =
       case panelHeadingTitleType of
         DefaultTitle content -> text content
-        H1 content -> h1 [] [ text content ]
-        H2 content -> h2 [] [ text content ]
-        H3 content -> h3 [] [ text content ]
-        H4 content -> h4 [] [ text content ]
-        H5 content -> h5 [] [ text content ]
+        PanelH1 content -> h1 [] [ text content ]
+        PanelH2 content -> h2 [] [ text content ]
+        PanelH3 content -> h3 [] [ text content ]
+        PanelH4 content -> h4 [] [ text content ]
+        PanelH5 content -> h5 [] [ text content ]
 
     panelHeadingTitleHtml = getPanelHeadingTitleHtml panelHeadingTitleType
     attributes = class "panel-heading" :: attributes
@@ -237,6 +260,11 @@ panelBody attributes htmlList =
     attributes = class "panel-body" :: attributes
   in
     div attributes htmlList
+
+----------------------------------------------------------------------------
+
+--Navbar
+----------------------------------------------------------------------------
 
 type NavbarType =
     DefaultNavbar
@@ -322,6 +350,11 @@ navbarCollapse attributes htmlList =
   in
     div attributes htmlList
 
+----------------------------------------------------------------------------
+
+--Well Well Well...  https://youtu.be/4iZOL63vej8?t=44
+----------------------------------------------------------------------------
+
 type WellOption =
     WellNormal
   | WellSmall
@@ -338,6 +371,11 @@ well wellOption attributes htmlList =
     attributes = class ("well " ++ wellOptionClass) :: attributes
   in
     div attributes htmlList
+
+----------------------------------------------------------------------------
+
+-- Misc
+----------------------------------------------------------------------------
 
 pullRight : List (Attribute msg) -> List (Html msg) -> Html msg
 pullRight attributes htmlList =
@@ -359,3 +397,5 @@ jumbotron attributes htmlList =
     attributes = class "jumbotron" :: attributes
   in
     div attributes htmlList
+
+----------------------------------------------------------------------------
