@@ -1,0 +1,3 @@
+* elm-bootstrapify
+** Purpose
+Elm-bootstrapify aims to elminate bootstrap styling rendering errors using precise type safety techniques.
