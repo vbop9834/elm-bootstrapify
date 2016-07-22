@@ -1,11 +1,68 @@
-module Bootstrap exposing (..)
+module Bootstrap exposing
+  (
+   containerFluid, container, row, column,
+   ColumnSize, ColumnType,
+   formHorizontal, FormGroupOption, formLabel, formInput, formTextArea,
+   ButtonOption, ButtonSizeModifier, btn,
+   listGroup, listGroupItem,
+   PanelType, panelGroup, panel, panelHeading, panelBody,
+   PanelHeadingTitleType,
+   NavbarType, navbar, navbarHeader, navbarBrand,
+   NavbarListAdjustment, NavbarPillsOptions, NavbarOptions, navbarList,
+   WellOption, well,
+   pullRight, pageHeader, jumbotron,
+   automationTag
+  )
+{-| The Bootstrap module contains all important bootstrap theming functions
+
+# Grid
+@docs containerFluid, container, row, column
+
+# Column
+@docs ColumnSize, ColumnType, column
+
+# Forms
+@docs formHorizontal, FormGroupOption, formLabel, formInput, formTextArea
+
+# Buttons
+@docs ButtonOption, ButtonSizeModifier, btn
+
+# List Group
+@docs listGroup, listGroupItem
+
+# Panels
+@docs PanelType, panelGroup, panel, panelHeading, panelBody
+
+# Panel Headings
+@docs PanelHeadingTitleType, panelHeading
+
+# Navbar
+@docs NavbarType, navbar, navbarHeader, navbarBrand
+
+# Navbar List
+@docs NavbarListAdjustment, NavbarPillsOptions, NavbarOptions, navbarList
+
+# Wells
+@docs WellOption, well
+
+# Page
+@docs pullRight, pageHeader, jumbotron
+
+# Automation
+@docs automationTag
+
+-}
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
 
 import String
 
---this is for being able to write UI Automation selectors efficiently
+{-|
+  this is for being able to write UI Automation selectors efficiently
+
+    button [ automationTag "btn" "submit" ] []
+-}
 automationTag : String -> String -> Attribute msg
 automationTag tag value =
   let
@@ -15,18 +72,39 @@ automationTag tag value =
 
 --Grid
 ----------------------------------------------------------------------------
+{-|
+  Generates a fluid container html element
+    containerFluid [ ]
+-}
 containerFluid : List (Html msg) -> Html msg
 containerFluid htmlList =
   div [ class "container-fluid" ] htmlList
 
+{-|
+  Generates a container html element
+    container [ ]
+-}
 container : List (Html msg) -> Html msg
 container htmlList =
   div [ class "container" ] htmlList
 
+{-|
+  Generates a row html element
+    containerFluid
+     [
+      row
+       [
+       ]
+     ]
+-}
 row : List (Html msg) -> Html msg
 row htmlList =
   div [ class "row" ] htmlList
 
+{-|
+  Type to be used when determining column size
+  Note that a row can only container up to 12 column size units
+-}
 type ColumnSize =
     One
   | Two
@@ -41,12 +119,31 @@ type ColumnSize =
   | Eleven
   | Twelve
 
+{-|
+  Type to be used when determining column size based on screen size
+  Extra small devices Phones (<768px)
+  Small devices Tablets (≥768px)
+  Medium devices Desktops (≥992px)
+  Large devices Desktops (≥1200px)
+-}
 type ColumnType =
     ExtraSmall ColumnSize
   | Small ColumnSize
   | Medium ColumnSize
   | Large ColumnSize
 
+{-|
+  Generates a column html element
+    containerFluid
+     [
+      row
+       [
+        column [ ExtraSmall Twelve, Small Twelve, Medium Twelve, Large Twelve ]
+         [
+         ]
+       ]
+     ]
+-}
 column : List ColumnType -> List (Html msg) -> Html msg
 column columns htmlList =
   let
@@ -88,17 +185,59 @@ column columns htmlList =
 
 ----------------------------------------------------------------------------
 
---Forms
+-- Forms
 ----------------------------------------------------------------------------
 
+{-|
+  Generates a row form-horizontal element
+    formHorizontal
+      [
+      ]
+-}
 formHorizontal : List (Html msg) -> Html msg
 formHorizontal htmlList =
   div [ class "form-horizontal" ] htmlList
 
-formGroup : List (Html msg) -> Html msg
-formGroup htmlList =
-  div [ class "form-group" ] htmlList
+{-|
+  A set of different Form group options
+-}
+type FormGroupOption =
+    FormGroupDefault
+  | FormGroupSmall
+  | FormGroupLarge
 
+{-|
+  Generates a formGroup html element
+    formHorizontal
+     [
+      formGroup FormGroupDefault
+        [
+        ]
+     ]
+-}
+formGroup : FormGroupOption -> List (Html msg) -> Html msg
+formGroup formGroupOption htmlList =
+  let
+    formGroupOptionClass =
+      case formGroupOption of
+        FormGroupDefault -> ""
+        FormGroupSmall -> "form-group-sm"
+        FormGroupLarge -> "form-group-lg"
+    formGroupClass =
+      "form-group " ++ formGroupOptionClass
+  in
+    div [ class formGroupClass ] htmlList
+
+{-|
+  Generates a formLabel html element
+    formHorizontal
+     [
+      formGroup FormGroupDefault
+        [
+         formLabel [] []
+        ]
+     ]
+-}
 formLabel : List (Attribute msg) -> List (Html msg) -> Html msg
 formLabel attributes htmlList =
   let
@@ -106,6 +245,16 @@ formLabel attributes htmlList =
   in
     label attributes htmlList
 
+{-|
+  Generates a formInput html element
+    formHorizontal
+     [
+      formGroup FormGroupDefault
+        [
+         formInput [] []
+        ]
+     ]
+-}
 formInput : List (Attribute msg) -> List (Html msg) -> Html msg
 formInput attributes htmlList =
   let
@@ -113,6 +262,16 @@ formInput attributes htmlList =
   in
     input attributes htmlList
 
+{-|
+  Generates a form text area html element
+    formHorizontal
+     [
+      formGroup FormGroupDefault
+        [
+         formTextArea [] []
+        ]
+     ]
+-}
 formTextArea : List (Attribute msg) -> List (Html msg) -> Html msg
 formTextArea attributes htmlList =
   let
@@ -125,6 +284,9 @@ formTextArea attributes htmlList =
 --Buttons
 ----------------------------------------------------------------------------
 
+{-|
+  A set of options for rendering a btn
+-}
 type ButtonOption =
     BtnDefault
   | BtnPrimary
@@ -133,14 +295,21 @@ type ButtonOption =
   | BtnInfo
   | BtnDanger
 
-type ButtonModifier =
+{-|
+  A set of sizes for rendering a btn
+-}
+type ButtonSizeModifier =
     BtnLarge
   | BtnBlock
   | BtnSmall
   | BtnExtraSmall
   | NavbarBtn
 
-btn : ButtonOption -> List ButtonModifier -> List (Attribute msg) -> List (Html msg) -> Html msg
+{-|
+  Generates a button html element
+    btn BtnPrimary [ BtnBlock, BtnLarge ] [] [ text "Hello world!" ]
+-}
+btn : ButtonOption -> List ButtonSizeModifier -> List (Attribute msg) -> List (Html msg) -> Html msg
 btn btnOption btnModifiers attributes htmlList =
   let
     getButtonModifierClass btnModifier =
@@ -182,10 +351,21 @@ btn btnOption btnModifiers attributes htmlList =
 --List group
 ----------------------------------------------------------------------------
 
+{-|
+  Generates a list group html element
+    listGroup [] []
+-}
 listGroup : List (Html msg) -> Html msg
 listGroup htmlList =
   div [ class "list-group" ] htmlList
 
+{-|
+  Generates a list group item html element
+    listGroup []
+     [
+      listGroupItem [] []
+     ]
+-}
 listGroupItem : List (Attribute msg) -> List (Html msg) -> Html msg
 listGroupItem attributes htmlList =
   let attributes = class "list-group-item" :: attributes
@@ -197,30 +377,40 @@ listGroupItem attributes htmlList =
 --Panels
 ----------------------------------------------------------------------------
 
+{-|
+  A set of options for Panels
+-}
 type PanelType =
-    Normal
-  | Primary
-  | Success
-  | Info
-  | Warning
-  | Danger
+    NormalPanel
+  | PrimaryPanel
+  | SuccessPanel
+  | InfoPanel
+  | WarningPanel
+  | DangerPanel
 
+{-|
+  Generates a panelGroup html element
+    panelGroup [] []
+-}
 panelGroup : List (Html msg) -> Html msg
 panelGroup htmlList =
   div [ class "panel-group" ] htmlList
 
-
+{-|
+  Generates a panel html element
+    panel PrimaryPanel [] []
+-}
 panel : PanelType -> List (Attribute msg) -> List (Html msg) -> Html msg
 panel panelType attributes htmlList =
   let
     getPanelTypeClass panelType =
       case panelType of
-        Normal -> "panel-default"
-        Primary -> "panel-primary"
-        Success -> "panel-success"
-        Info -> "panel-info"
-        Warning -> "panel-warning"
-        Danger -> "panel-danger"
+        NormalPanel -> "panel-default"
+        PrimaryPanel -> "panel-primary"
+        SuccessPanel -> "panel-success"
+        InfoPanel -> "panel-info"
+        WarningPanel -> "panel-warning"
+        DangerPanel -> "panel-danger"
   in
     let
       panelTypeClass = getPanelTypeClass panelType
@@ -228,6 +418,9 @@ panel panelType attributes htmlList =
     in
       div attributes htmlList
 
+{-|
+  Types of Panel Headings
+-}
 type PanelHeadingTitleType =
     DefaultTitle String
   | PanelH1 String
@@ -236,6 +429,10 @@ type PanelHeadingTitleType =
   | PanelH4 String
   | PanelH5 String
 
+{-|
+  Generates a panelHeading html element
+    panelHeading PanelH3 [] []
+-}
 panelHeading : PanelHeadingTitleType -> List (Attribute msg) -> List (Html msg) -> Html msg
 panelHeading panelHeadingTitleType attributes htmlList =
   let
@@ -254,6 +451,10 @@ panelHeading panelHeadingTitleType attributes htmlList =
   in
     div attributes htmlList
 
+{-|
+  Generates a panelBody html element
+    panelBody [] []
+-}
 panelBody : List (Attribute msg) -> List (Html msg) -> Html msg
 panelBody attributes htmlList =
   let
@@ -266,11 +467,18 @@ panelBody attributes htmlList =
 --Navbar
 ----------------------------------------------------------------------------
 
+{-|
+  Different types of Navbar styles
+-}
 type NavbarType =
     DefaultNavbar
   | InverseNavbar
   | FormNavbar
 
+{-|
+  Generates a navbar html element
+    navbar DefaultNavbar [] []
+-}
 navbar : NavbarType ->  List (Attribute msg) -> List (Html msg) -> Html msg
 navbar navbarType attributes htmlList =
   let
@@ -284,13 +492,10 @@ navbar navbarType attributes htmlList =
   in
     nav attributes htmlList
 
-navbarFixedToTop : NavbarType ->List (Attribute msg) -> List (Html msg) -> Html msg
-navbarFixedToTop navbarType attributes htmlList =
-  let
-    attributes = class "navbar-fixed-top" :: attributes
-  in
-    navbar navbarType attributes htmlList
-
+{-|
+  Generates a navbar header html element
+    navbarHeader [] []
+-}
 navbarHeader : List (Attribute msg) -> List (Html msg) -> Html msg
 navbarHeader attributes htmlList =
   let
@@ -298,6 +503,10 @@ navbarHeader attributes htmlList =
   in
     div attributes htmlList
 
+{-|
+  Generates a navbarBrand html element
+    navbarBrand [] []
+-}
 navbarBrand : List (Attribute msg) -> List (Html msg) -> Html msg
 navbarBrand attributes htmlList =
   let
@@ -305,21 +514,36 @@ navbarBrand attributes htmlList =
   in
     a attributes htmlList
 
+{-|
+  A set of options for adjusting a navbar list
+-}
 type NavbarListAdjustment =
     NavbarDefault
   | NavbarRight
   | NavbarLeft
   | NavbarJustified
 
+{-|
+  Option for Navbar Pills
+-}
 type NavbarPillsOptions =
     PillsNotStacked
   | PillsStacked
 
+{-|
+  A set of Navbar Options
+-}
 type NavbarOptions =
     NavbarNav
   | NavbarTabs
   | NavbarPills NavbarPillsOptions
 
+{-|
+  Generates a navbarList html element
+    navbarList (NavbarPills PillsStacked) NavbarRight []
+     [
+     ]
+-}
 navbarList : NavbarOptions -> NavbarListAdjustment -> List (Attribute msg) -> List (Html msg) -> Html msg
 navbarList navbarOption navbarListAdjustment attributes htmlList =
   let
@@ -343,23 +567,23 @@ navbarList navbarOption navbarListAdjustment attributes htmlList =
   in
     ul attributes htmlList
 
-navbarCollapse : List (Attribute msg) -> List (Html msg) -> Html msg
-navbarCollapse attributes htmlList =
-  let
-    attributes = class "collapse navbar-collapse" :: attributes
-  in
-    div attributes htmlList
-
 ----------------------------------------------------------------------------
 
 --Well Well Well...  https://youtu.be/4iZOL63vej8?t=44
 ----------------------------------------------------------------------------
 
+{-|
+  Different Size Wells!
+-}
 type WellOption =
     WellNormal
   | WellSmall
   | WellLarge
 
+{-|
+  Generates a well html element
+    well WellLarge [] []
+-}
 well : WellOption -> List (Attribute msg) -> List (Html msg) -> Html msg
 well wellOption attributes htmlList =
   let
@@ -374,9 +598,13 @@ well wellOption attributes htmlList =
 
 ----------------------------------------------------------------------------
 
--- Misc
+-- Page
 ----------------------------------------------------------------------------
 
+{-|
+  Generates a div with the pull-right class
+    pullRight [] []
+-}
 pullRight : List (Attribute msg) -> List (Html msg) -> Html msg
 pullRight attributes htmlList =
   let
@@ -384,6 +612,10 @@ pullRight attributes htmlList =
   in
     div attributes htmlList
 
+{-|
+  Generates a page header html element
+    pageHeader [] []
+-}
 pageHeader : List (Attribute msg) -> List (Html msg) -> Html msg
 pageHeader attributes htmlList =
   let
@@ -391,6 +623,10 @@ pageHeader attributes htmlList =
   in
     div attributes htmlList
 
+{-|
+  Generates a jumbotron html element
+    jumbotron [] []
+-}
 jumbotron : List (Attribute msg) -> List (Html msg) -> Html msg
 jumbotron attributes htmlList =
   let
