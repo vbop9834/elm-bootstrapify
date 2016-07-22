@@ -1,0 +1,108 @@
+module Bootstrap.Panels exposing
+  (
+   PanelType, panelGroup, panel, panelHeading, panelBody,
+   PanelHeadingTitleType
+  )
+
+{-| Functions for generating bootstrap panels
+
+# Panels
+@docs PanelType, panelGroup, panel, panelHeading, panelBody
+
+# Panel Headings
+@docs PanelHeadingTitleType, panelHeading
+
+-}
+
+import Html exposing (..)
+import Html.Attributes exposing (..)
+
+--Panels
+----------------------------------------------------------------------------
+
+{-|
+  A set of options for Panels
+-}
+type PanelType =
+    NormalPanel
+  | PrimaryPanel
+  | SuccessPanel
+  | InfoPanel
+  | WarningPanel
+  | DangerPanel
+
+{-|
+  Generates a panelGroup html element
+    panelGroup [] []
+-}
+panelGroup : List (Html msg) -> Html msg
+panelGroup htmlList =
+  div [ class "panel-group" ] htmlList
+
+{-|
+  Generates a panel html element
+    panel PrimaryPanel [] []
+-}
+panel : PanelType -> List (Attribute msg) -> List (Html msg) -> Html msg
+panel panelType attributes htmlList =
+  let
+    getPanelTypeClass panelType =
+      case panelType of
+        NormalPanel -> "panel-default"
+        PrimaryPanel -> "panel-primary"
+        SuccessPanel -> "panel-success"
+        InfoPanel -> "panel-info"
+        WarningPanel -> "panel-warning"
+        DangerPanel -> "panel-danger"
+  in
+    let
+      panelTypeClass = getPanelTypeClass panelType
+      attributes = class ("panel " ++ panelTypeClass) :: attributes
+    in
+      div attributes htmlList
+
+{-|
+  Types of Panel Headings
+-}
+type PanelHeadingTitleType =
+    DefaultTitle String
+  | PanelH1 String
+  | PanelH2 String
+  | PanelH3 String
+  | PanelH4 String
+  | PanelH5 String
+
+{-|
+  Generates a panelHeading html element
+    panelHeading PanelH3 [] []
+-}
+panelHeading : PanelHeadingTitleType -> List (Attribute msg) -> List (Html msg) -> Html msg
+panelHeading panelHeadingTitleType attributes htmlList =
+  let
+    getPanelHeadingTitleHtml panelHeadingTitleType =
+      case panelHeadingTitleType of
+        DefaultTitle content -> text content
+        PanelH1 content -> h1 [] [ text content ]
+        PanelH2 content -> h2 [] [ text content ]
+        PanelH3 content -> h3 [] [ text content ]
+        PanelH4 content -> h4 [] [ text content ]
+        PanelH5 content -> h5 [] [ text content ]
+
+    panelHeadingTitleHtml = getPanelHeadingTitleHtml panelHeadingTitleType
+    attributes = class "panel-heading" :: attributes
+    htmlList = panelHeadingTitleHtml :: htmlList
+  in
+    div attributes htmlList
+
+{-|
+  Generates a panelBody html element
+    panelBody [] []
+-}
+panelBody : List (Attribute msg) -> List (Html msg) -> Html msg
+panelBody attributes htmlList =
+  let
+    attributes = class "panel-body" :: attributes
+  in
+    div attributes htmlList
+
+----------------------------------------------------------------------------
