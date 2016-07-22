@@ -40,8 +40,8 @@ type ButtonSizeModifier =
   | BtnExtraSmall
   | NavbarBtn
 
-{-|
-  Generates a button html element
+{-| Generates a button html element
+
     btn BtnPrimary [ BtnBlock, BtnLarge ] [] [ text "Hello world!" ]
 -}
 btn : ButtonOption -> List ButtonSizeModifier -> List (Attribute msg) -> List (Html msg) -> Html msg

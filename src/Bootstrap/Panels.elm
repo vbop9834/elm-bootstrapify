@@ -35,16 +35,16 @@ type PanelType =
   | WarningPanel
   | DangerPanel
 
-{-|
-  Generates a panelGroup html element
+{-| Generates a panelGroup html element
+
     panelGroup [] []
 -}
 panelGroup : List (Html msg) -> Html msg
 panelGroup htmlList =
   div [ class "panel-group" ] htmlList
 
-{-|
-  Generates a panel html element
+{-| Generates a panel html element
+
     panel PrimaryPanel [] []
 -}
 panel : PanelType -> List (Attribute msg) -> List (Html msg) -> Html msg
@@ -76,8 +76,8 @@ type PanelHeadingTitleType =
   | PanelH4 String
   | PanelH5 String
 
-{-|
-  Generates a panelHeading html element
+{-| Generates a panelHeading html element
+
     panelHeading PanelH3 [] []
 -}
 panelHeading : PanelHeadingTitleType -> List (Attribute msg) -> List (Html msg) -> Html msg
@@ -98,8 +98,8 @@ panelHeading panelHeadingTitleType attributes htmlList =
   in
     div attributes htmlList
 
-{-|
-  Generates a panelBody html element
+{-| Generates a panelBody html element
+
     panelBody [] []
 -}
 panelBody : List (Attribute msg) -> List (Html msg) -> Html msg

@@ -16,16 +16,16 @@ import Html.Attributes exposing (..)
 --List group
 ----------------------------------------------------------------------------
 
-{-|
-  Generates a list group html element
+{-| Generates a list group html element
+
     listGroup [] []
 -}
 listGroup : List (Html msg) -> Html msg
 listGroup htmlList =
   div [ class "list-group" ] htmlList
 
-{-|
-  Generates a list group item html element
+{-| Generates a list group item html element
+
     listGroup []
      [
       listGroupItem [] []

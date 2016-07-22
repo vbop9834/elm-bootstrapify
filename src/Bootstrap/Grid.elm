@@ -20,24 +20,24 @@ import Html.Attributes exposing (..)
 
 --Grid
 ----------------------------------------------------------------------------
-{-|
-  Generates a fluid container html element
+{-| Generates a fluid container html element
+
     containerFluid [ ]
 -}
 containerFluid : List (Html msg) -> Html msg
 containerFluid htmlList =
   div [ class "container-fluid" ] htmlList
 
-{-|
-  Generates a container html element
+{-| Generates a container html element
+
     container [ ]
 -}
 container : List (Html msg) -> Html msg
 container htmlList =
   div [ class "container" ] htmlList
 
-{-|
-  Generates a row html element
+{-| Generates a row html element
+
     containerFluid
      [
       row
@@ -49,8 +49,7 @@ row : List (Html msg) -> Html msg
 row htmlList =
   div [ class "row" ] htmlList
 
-{-|
-  Type to be used when determining column size
+{-| Type to be used when determining column size
   Note that a row can only container up to 12 column size units
 -}
 type ColumnSize =
@@ -80,8 +79,8 @@ type ColumnType =
   | Medium ColumnSize
   | Large ColumnSize
 
-{-|
-  Generates a column html element
+{-| Generates a column html element
+
     containerFluid
      [
       row

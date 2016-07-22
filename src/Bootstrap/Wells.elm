@@ -25,8 +25,8 @@ type WellOption =
   | WellSmall
   | WellLarge
 
-{-|
-  Generates a well html element
+{-| Generates a well html element
+
     well WellLarge [] []
 -}
 well : WellOption -> List (Attribute msg) -> List (Html msg) -> Html msg

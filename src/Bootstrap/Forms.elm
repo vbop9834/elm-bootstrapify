@@ -20,8 +20,8 @@ import Html.Attributes exposing (..)
 -- Forms
 ----------------------------------------------------------------------------
 
-{-|
-  Generates a row form-horizontal element
+{-| Generates a row form-horizontal element
+
     formHorizontal
       [
       ]
@@ -38,8 +38,8 @@ type FormGroupOption =
   | FormGroupSmall
   | FormGroupLarge
 
-{-|
-  Generates a formGroup html element
+{-| Generates a formGroup html element
+
     formHorizontal
      [
       formGroup FormGroupDefault
@@ -60,8 +60,8 @@ formGroup formGroupOption htmlList =
   in
     div [ class formGroupClass ] htmlList
 
-{-|
-  Generates a formLabel html element
+{-| Generates a formLabel html element
+
     formHorizontal
      [
       formGroup FormGroupDefault
@@ -77,8 +77,8 @@ formLabel attributes htmlList =
   in
     label attributes htmlList
 
-{-|
-  Generates a formInput html element
+{-| Generates a formInput html element
+
     formHorizontal
      [
       formGroup FormGroupDefault
@@ -94,8 +94,8 @@ formInput attributes htmlList =
   in
     input attributes htmlList
 
-{-|
-  Generates a form text area html element
+{-| Generates a form text area html element
+
     formHorizontal
      [
       formGroup FormGroupDefault

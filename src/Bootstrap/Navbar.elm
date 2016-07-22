@@ -34,8 +34,8 @@ type NavbarType =
   | InverseNavbar
   | FormNavbar
 
-{-|
-  Generates a navbar html element
+{-| Generates a navbar html element
+
     navbar DefaultNavbar [] []
 -}
 navbar : NavbarType ->  List (Attribute msg) -> List (Html msg) -> Html msg
@@ -51,8 +51,8 @@ navbar navbarType attributes htmlList =
   in
     nav attributes htmlList
 
-{-|
-  Generates a navbar header html element
+{-| Generates a navbar header html element
+
     navbarHeader [] []
 -}
 navbarHeader : List (Attribute msg) -> List (Html msg) -> Html msg
@@ -62,8 +62,8 @@ navbarHeader attributes htmlList =
   in
     div attributes htmlList
 
-{-|
-  Generates a navbarBrand html element
+{-| Generates a navbarBrand html element
+
     navbarBrand [] []
 -}
 navbarBrand : List (Attribute msg) -> List (Html msg) -> Html msg
@@ -73,8 +73,7 @@ navbarBrand attributes htmlList =
   in
     a attributes htmlList
 
-{-|
-  A set of options for adjusting a navbar list
+{-| A set of options for adjusting a navbar list
 -}
 type NavbarListAdjustment =
     NavbarDefault
@@ -97,8 +96,8 @@ type NavbarOptions =
   | NavbarTabs
   | NavbarPills NavbarPillsOptions
 
-{-|
-  Generates a navbarList html element
+{-| Generates a navbarList html element
+
     navbarList (NavbarPills PillsStacked) NavbarRight []
      [
      ]

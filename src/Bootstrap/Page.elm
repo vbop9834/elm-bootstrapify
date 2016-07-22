@@ -21,8 +21,7 @@ import Html.Attributes exposing (..)
 
 import String
 
-{-|
-  this is for being able to write UI Automation selectors efficiently
+{-| This is for being able to write UI Automation selectors efficiently
 
     button [ automationTag "btn" "submit" ] []
 -}
@@ -36,8 +35,8 @@ automationTag tag value =
 -- Page
 ----------------------------------------------------------------------------
 
-{-|
-  Generates a div with the pull-right class
+{-| Generates a div with the pull-right class
+
     pullRight [] []
 -}
 pullRight : List (Attribute msg) -> List (Html msg) -> Html msg
@@ -47,8 +46,8 @@ pullRight attributes htmlList =
   in
     div attributes htmlList
 
-{-|
-  Generates a page header html element
+{-| Generates a page header html element
+
     pageHeader [] []
 -}
 pageHeader : List (Attribute msg) -> List (Html msg) -> Html msg
@@ -58,8 +57,8 @@ pageHeader attributes htmlList =
   in
     div attributes htmlList
 
-{-|
-  Generates a jumbotron html element
+{-| Generates a jumbotron html element
+
     jumbotron [] []
 -}
 jumbotron : List (Attribute msg) -> List (Html msg) -> Html msg
