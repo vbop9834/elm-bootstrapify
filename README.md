@@ -37,3 +37,22 @@ let view =
      ]
    ]
 ```
+## Updating
+Before updating, it is recommended to perform a diff of the version you are attempting to merge and the version that is depended on.
+
+Navigate to root directory of your project and type
+```
+elm-package diff JeremyBellows/elm-bootstrapify 2.0.1 2.1.0
+```
+
+Be sure to replace 2.0.1 with the version of elm-bootstrapify that is depended on.
+Replace 2.1.0 with the version of elm-bootstrapify that you want to use.
+
+If the diff is desirable, then change the version number of elm-bootrapify in `elm-package.json`.
+
+Execute the following command
+```
+elm package install JeremyBellows/elm-bootstrapify
+```
+
+[ For further reading, click here to be taken to the elm-package documentation. ] (https://github.com/elm-lang/elm-package#updating-dependencies)
