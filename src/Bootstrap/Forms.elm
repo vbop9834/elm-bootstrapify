@@ -11,7 +11,7 @@ module Bootstrap.Forms exposing
 {-| Bootstrap functions pertaining to forms
 
 # Forms
-@docs formHorizontal, FormGroupOption, formLabel, formInput, formTextArea
+@docs formHorizontal, formGroup, FormGroupOption, formLabel, formInput, formTextArea
 
 -}
 
