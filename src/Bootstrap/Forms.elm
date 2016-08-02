@@ -1,6 +1,6 @@
 module Bootstrap.Forms exposing
   (
-   FormAlignmentOption,
+   FormAlignmentOption(FormDefault, FormHorizontal, FormInline),
    form,
    formGroup,
    FormGroupOption(FormGroupDefault, FormGroupSmall, FormGroupLarge),
