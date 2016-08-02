@@ -38,21 +38,24 @@ let view =
    ]
 ```
 ## Updating
+### Disclaimer
+This library is still in development so the types and names of functions may change. Always be sure to perform a diff before upgrading!
+### Process
 Before updating, it is recommended to perform a diff of the version you are attempting to merge and the version that is depended on.
 
 Navigate to root directory of your project and type
 ```
-elm-package diff JeremyBellows/elm-bootstrapify 2.0.1 4.0.0
+elm-package diff JeremyBellows/elm-bootstrapify 2.0.1 5.0.0
 ```
 
 Be sure to replace 2.0.1 with the version of elm-bootstrapify that is depended on.
-Replace 4.0.0 with the version of elm-bootstrapify that you want to use.
+Replace 5.0.0 with the version of elm-bootstrapify that you want to use.
 
 If the diff is desirable, then change the version number of elm-bootrapify in `elm-package.json`.
 
 It should look like
 ```
-"JeremyBellows/elm-bootstrapify": "4.0.0 <= v < 5.0.0",
+"JeremyBellows/elm-bootstrapify": "5.0.0 <= v < 6.0.0",
 ```
 
 Execute the following command
