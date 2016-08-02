@@ -1,6 +1,7 @@
 module Bootstrap.Forms exposing
   (
-   formHorizontal,
+   FormAlignmentOption,
+   form,
    formGroup,
    FormGroupOption(FormGroupDefault, FormGroupSmall, FormGroupLarge),
    formLabel,
@@ -11,7 +12,7 @@ module Bootstrap.Forms exposing
 {-| Bootstrap functions pertaining to forms
 
 # Forms
-@docs formHorizontal, formGroup, FormGroupOption, formLabel, formInput, formTextArea
+@docs FormAlignmentOption, form, formGroup, FormGroupOption, formLabel, formInput, formTextArea
 
 -}
 
@@ -21,15 +22,35 @@ import Html.Attributes exposing (..)
 -- Forms
 ----------------------------------------------------------------------------
 
-{-| Generates a row form-horizontal element
+{-| Options for Form Alignment
 
-    formHorizontal
-      [
-      ]
+    case formAlignmentOption of
+      FormDefault -> ""
+      FormHorizontal -> "form-horizontal"
+      FormInline -> "form-inline"
 -}
-formHorizontal : List (Html msg) -> Html msg
-formHorizontal htmlList =
-  div [ class "form-horizontal" ] htmlList
+type FormAlignmentOption =
+    FormDefault
+  | FormHorizontal
+  | FormInline
+
+{-| Generates a form with the supplied alignment
+
+    case formAlignmentOption of
+      FormDefault -> ""
+      FormHorizontal -> "form-horizontal"
+      FormInline -> "form-inline"
+-}
+form : FormAlignmentOption -> List (Html msg) -> Html msg
+form formAlignmentOption htmlList =
+  let
+    formAlignmentClass =
+      case formAlignmentOption of
+        FormDefault -> ""
+        FormHorizontal -> "form-horizontal"
+        FormInline -> "form-inline"
+  in
+    div [ class formAlignmentClass ] htmlList
 
 {-|
   A set of different Form group options
