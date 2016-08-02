@@ -36,21 +36,21 @@ type FormAlignmentOption =
 
 {-| Generates a form with the supplied alignment
 
-    case formAlignmentOption of
-      FormDefault -> ""
-      FormHorizontal -> "form-horizontal"
-      FormInline -> "form-inline"
+    form FormDefault [ onSubmit SomeMsg ]
+     [
+     ]
 -}
-form : FormAlignmentOption -> List (Html msg) -> Html msg
-form formAlignmentOption htmlList =
+form : FormAlignmentOption -> List (Attribute msg) -> List (Html msg) -> Html msg
+form formAlignmentOption attributes htmlList =
   let
     formAlignmentClass =
       case formAlignmentOption of
         FormDefault -> ""
         FormHorizontal -> "form-horizontal"
         FormInline -> "form-inline"
+    attributes = class formAlignmentClass :: attributes
   in
-    div [ class formAlignmentClass ] htmlList
+    Html.form attributes htmlList
 
 {-|
   A set of different Form group options
@@ -62,7 +62,7 @@ type FormGroupOption =
 
 {-| Generates a formGroup html element
 
-    formHorizontal
+    form FormDefault [ onSubmit SomeMsg ]
      [
       formGroup FormGroupDefault
         [
@@ -84,7 +84,7 @@ formGroup formGroupOption htmlList =
 
 {-| Generates a formLabel html element
 
-    formHorizontal
+    form FormDefault [ onSubmit SomeMsg ]
      [
       formGroup FormGroupDefault
         [
@@ -101,7 +101,7 @@ formLabel attributes htmlList =
 
 {-| Generates a formInput html element
 
-    formHorizontal
+    form FormDefault [ onSubmit SomeMsg ]
      [
       formGroup FormGroupDefault
         [
@@ -118,7 +118,7 @@ formInput attributes htmlList =
 
 {-| Generates a form text area html element
 
-    formHorizontal
+    form FormDefault [ onSubmit SomeMsg ]
      [
       formGroup FormGroupDefault
         [
