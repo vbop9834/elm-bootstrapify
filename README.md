@@ -45,7 +45,7 @@ Before updating, it is recommended to perform a diff of the version you are atte
 
 Navigate to root directory of your project and type
 ```
-elm-package diff JeremyBellows/elm-bootstrapify 2.0.1 5.0.0
+elm-package diff JeremyBellows/elm-bootstrapify 2.0.1 6.0.0
 ```
 
 Be sure to replace 2.0.1 with the version of elm-bootstrapify that is depended on.
@@ -55,7 +55,7 @@ If the diff is desirable, then change the version number of elm-bootrapify in `e
 
 It should look like
 ```
-"JeremyBellows/elm-bootstrapify": "5.0.0 <= v < 6.0.0",
+"JeremyBellows/elm-bootstrapify": "6.0.0 <= v < 7.0.0",
 ```
 
 Execute the following command

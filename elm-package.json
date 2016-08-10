@@ -1,5 +1,5 @@
 {
-    "version": "5.0.0",
+    "version": "6.0.0",
     "summary": "A collection of functions to use the bootstrap theme when designing html",
     "repository": "https://github.com/JeremyBellows/elm-bootstrapify.git",
     "license": "BSD3",
