@@ -2,13 +2,14 @@ module Bootstrap.Buttons exposing
   (
    ButtonOption(BtnDefault, BtnPrimary, BtnSuccess, BtnWarning, BtnInfo, BtnDanger),
    ButtonSizeModifier(BtnLarge, BtnBlock, BtnSmall, BtnExtraSmall, NavbarBtn),
+   ButtonModifier(BtnCollapse),
    btn
   )
 
 {-| Functions for bootstrap buttons
 
 # Buttons
-@docs ButtonOption, ButtonSizeModifier, btn
+@docs ButtonOption, ButtonSizeModifier, ButtonModifier, btn
 
 -}
 
@@ -40,12 +41,18 @@ type ButtonSizeModifier =
   | BtnExtraSmall
   | NavbarBtn
 
+{-|
+  Modifiers for button attributes
+-}
+type ButtonModifier =
+    BtnCollapse String
+
 {-| Generates a button html element
 
-    btn BtnPrimary [ BtnBlock, BtnLarge ] [] [ text "Hello world!" ]
+    btn BtnPrimary [ BtnBlock, BtnLarge ] [ BtnCollapse "#idOfElement, .orClass" ] [] [ text "Hello world!" ]
 -}
-btn : ButtonOption -> List ButtonSizeModifier -> List (Attribute msg) -> List (Html msg) -> Html msg
-btn btnOption btnModifiers attributes htmlList =
+btn : ButtonOption -> List ButtonSizeModifier -> List ButtonModifier -> List (Attribute msg) -> List (Html msg) -> Html msg
+btn btnOption btnSizeModifiers btnModifiers attributes htmlList =
   let
     getButtonModifierClass btnModifier =
       case btnModifier of
@@ -54,6 +61,9 @@ btn btnOption btnModifiers attributes htmlList =
         BtnSmall -> "btn-sm"
         BtnExtraSmall -> "btn-xs"
         NavbarBtn -> "navbar-btn"
+    getButtonModifierAttribute btnModifier =
+      case btnModifier of
+        BtnCollapse target -> [ attribute "data-toggle" "collapse", attribute "data-target" target ]
   in
     let
     -----------------------------------------------------------------------
@@ -69,14 +79,23 @@ btn btnOption btnModifiers attributes htmlList =
       classes =
          let
            buttonModifierClasses =
-             btnModifiers
+             btnSizeModifiers
              |> List.map getButtonModifierClass
              |> List.map (\class -> class ++ " ")
              |> String.concat
          in
            "btn " ++ buttonOptionClass ++ " " ++ buttonModifierClasses
     -----------------------------------------------------------------------
-      attributes = class classes :: attributes
+      btnModifierAttributes =
+          let
+            buttonModifierAttributes =
+             btnModifiers
+             |> List.map getButtonModifierAttribute
+             |> List.concat
+          in
+            buttonModifierAttributes ++ attributes
+    -----------------------------------------------------------------------
+      attributes = class classes :: btnModifierAttributes
     -----------------------------------------------------------------------
     in
       button attributes htmlList
