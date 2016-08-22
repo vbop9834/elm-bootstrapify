@@ -5,6 +5,7 @@ module Bootstrap.Navbar exposing
    navbarHeader,
    navbarBrand,
    navbarCollapse,
+   navbarHamburger,
    NavbarListAdjustment(NavbarDefault,NavbarRight,NavbarLeft,NavbarJustified),
    NavbarPillsOptions(PillsNotStacked, PillsStacked),
    NavbarOptions(NavbarNav, NavbarTabs, NavbarPills),
@@ -14,7 +15,7 @@ module Bootstrap.Navbar exposing
 {-| Functions for generating Bootstrap navbar elements
 
 # Navbar
-@docs NavbarType, navbar, navbarHeader, navbarBrand, navbarCollapse
+@docs NavbarType, navbar, navbarHeader, navbarBrand, navbarCollapse, navbarHamburger
 
 # Navbar List
 @docs NavbarListAdjustment, NavbarPillsOptions, NavbarOptions, navbarList
@@ -96,6 +97,24 @@ navbarCollapse attributes htmlList =
     attributes = class "collapse navbar-collapse" :: attributes
   in
     div attributes htmlList
+
+{-| Generates a collapse breadcrumb button for navbar lists. Parameter is for css selector depicting collapsable target
+
+    navbarHamburger "#collapseMe"
+
+-}
+navbarHamburger : String -> Html msg
+navbarHamburger target =
+  let
+    dataTargetAttribute = attribute "data-target" target
+    attributes =  [ attribute "data-toggle" "collapse", class "navbar-toggle", dataTargetAttribute ] ++ attributes
+  in
+    button attributes
+     [
+      span [ class "icon-bar" ] [],
+      span [ class "icon-bar" ] [],
+      span [ class "icon-bar" ] []
+     ]
 
 {-| A set of options for adjusting a navbar list
 -}
