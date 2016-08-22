@@ -1,7 +1,7 @@
 module Bootstrap.Buttons exposing
   (
    ButtonOption(BtnDefault, BtnPrimary, BtnSuccess, BtnWarning, BtnInfo, BtnDanger),
-   ButtonSizeModifier(BtnLarge, BtnBlock, BtnSmall, BtnExtraSmall, NavbarBtn),
+   ButtonSizeModifier(BtnLarge, BtnBlock, BtnSmall, BtnExtraSmall, NavbarBtn, NavbarToggle),
    ButtonModifier(BtnCollapse),
    btn
   )
@@ -40,6 +40,7 @@ type ButtonSizeModifier =
   | BtnSmall
   | BtnExtraSmall
   | NavbarBtn
+  | NavbarToggle
 
 {-|
   Modifiers for button attributes
@@ -61,6 +62,7 @@ btn btnOption btnSizeModifiers btnModifiers attributes htmlList =
         BtnSmall -> "btn-sm"
         BtnExtraSmall -> "btn-xs"
         NavbarBtn -> "navbar-btn"
+        NavbarToggle -> "navbar-toggle"
     getButtonModifierAttribute btnModifier =
       case btnModifier of
         BtnCollapse target -> [ attribute "data-toggle" "collapse", attribute "data-target" target ]
