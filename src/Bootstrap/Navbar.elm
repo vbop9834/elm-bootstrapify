@@ -4,6 +4,7 @@ module Bootstrap.Navbar exposing
    navbar,
    navbarHeader,
    navbarBrand,
+   navbarCollapse,
    NavbarListAdjustment(NavbarDefault,NavbarRight,NavbarLeft,NavbarJustified),
    NavbarPillsOptions(PillsNotStacked, PillsStacked),
    NavbarOptions(NavbarNav, NavbarTabs, NavbarPills),
@@ -13,7 +14,7 @@ module Bootstrap.Navbar exposing
 {-| Functions for generating Bootstrap navbar elements
 
 # Navbar
-@docs NavbarType, navbar, navbarHeader, navbarBrand
+@docs NavbarType, navbar, navbarHeader, navbarBrand, navbarCollapse
 
 # Navbar List
 @docs NavbarListAdjustment, NavbarPillsOptions, NavbarOptions, navbarList
@@ -72,6 +73,29 @@ navbarBrand attributes htmlList =
     attributes = class "navbar-brand" :: attributes
   in
     a attributes htmlList
+
+{-| Generates a collapse div for navbar lists
+
+    navbarCollapse [ id "collapseMe" ]
+     [
+      navbarList (NavbarPills PillsStacked) NavbarRight []
+       [
+        li []
+         [
+          a []
+           [
+            text "One"
+           ]
+         ]
+       ]
+     ]
+-}
+navbarCollapse : List (Attribute msg) -> List (Html msg) -> Html msg
+navbarCollapse attributes htmlList =
+  let
+    attributes = class "collapse navbar-collapse" :: attributes
+  in
+    div attributes htmlList
 
 {-| A set of options for adjusting a navbar list
 -}
