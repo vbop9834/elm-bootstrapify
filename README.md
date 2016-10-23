@@ -49,7 +49,7 @@ elm-package diff JeremyBellows/elm-bootstrapify 2.0.1 8.0.0
 ```
 
 Be sure to replace 2.0.1 with the version of elm-bootstrapify that is depended on.
-Replace 7.0.0 with the version of elm-bootstrapify that you want to use.
+Replace 8.0.0 with the version of elm-bootstrapify that you want to use.
 
 If the diff is desirable, then change the version number of elm-bootrapify in `elm-package.json`.
 
