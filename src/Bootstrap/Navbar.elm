@@ -41,7 +41,7 @@ type NavbarType =
     navbar DefaultNavbar [] []
 -}
 navbar : NavbarType ->  List (Attribute msg) -> List (Html msg) -> Html msg
-navbar navbarType attributes htmlList =
+navbar navbarType extraAttributes htmlList =
   let
     navbarTypeClass =
       case navbarType of
@@ -49,7 +49,7 @@ navbar navbarType attributes htmlList =
         InverseNavbar -> "navbar-inverse"
         FormNavbar -> "navbar-form"
     navbarClass = "navbar " ++ navbarTypeClass
-    attributes = class navbarClass :: attributes
+    attributes = class navbarClass :: extraAttributes
   in
     nav attributes htmlList
 
@@ -58,9 +58,9 @@ navbar navbarType attributes htmlList =
     navbarHeader [] []
 -}
 navbarHeader : List (Attribute msg) -> List (Html msg) -> Html msg
-navbarHeader attributes htmlList =
+navbarHeader extraAttributes htmlList =
   let
-    attributes = class "navbar-header" :: attributes
+    attributes = class "navbar-header" :: extraAttributes
   in
     div attributes htmlList
 
@@ -69,9 +69,9 @@ navbarHeader attributes htmlList =
     navbarBrand [] []
 -}
 navbarBrand : List (Attribute msg) -> List (Html msg) -> Html msg
-navbarBrand attributes htmlList =
+navbarBrand extraAttributes htmlList =
   let
-    attributes = class "navbar-brand" :: attributes
+    attributes = class "navbar-brand" :: extraAttributes
   in
     a attributes htmlList
 
@@ -92,9 +92,9 @@ navbarBrand attributes htmlList =
      ]
 -}
 navbarCollapse : List (Attribute msg) -> List (Html msg) -> Html msg
-navbarCollapse attributes htmlList =
+navbarCollapse extraAttributes htmlList =
   let
-    attributes = class "collapse navbar-collapse" :: attributes
+    attributes = class "collapse navbar-collapse" :: extraAttributes
   in
     div attributes htmlList
 
@@ -107,7 +107,7 @@ navbarHamburger : String -> Html msg
 navbarHamburger target =
   let
     dataTargetAttribute = attribute "data-target" target
-    attributes =  [ attribute "data-toggle" "collapse", class "navbar-toggle", dataTargetAttribute ] ++ attributes
+    attributes =  [ attribute "data-toggle" "collapse", class "navbar-toggle", dataTargetAttribute ]
   in
     button attributes
      [
@@ -146,7 +146,7 @@ type NavbarOptions =
      ]
 -}
 navbarList : NavbarOptions -> NavbarListAdjustment -> List (Attribute msg) -> List (Html msg) -> Html msg
-navbarList navbarOption navbarListAdjustment attributes htmlList =
+navbarList navbarOption navbarListAdjustment extraAttributes htmlList =
   let
     navbarListAdjustmentClass =
       case navbarListAdjustment of
@@ -164,7 +164,7 @@ navbarList navbarOption navbarListAdjustment attributes htmlList =
         NavbarTabs -> "navbar-tabs"
         NavbarPills pillsOption -> "nav-pills " ++ (getNavbarPillsOptionClass pillsOption)
     navbarClass = "nav " ++ (getNavbarOptionClass navbarOption) ++ " " ++ navbarListAdjustmentClass
-    attributes = class navbarClass :: attributes
+    attributes = class navbarClass :: extraAttributes
   in
     ul attributes htmlList
 

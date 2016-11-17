@@ -41,14 +41,14 @@ type FormAlignmentOption =
      ]
 -}
 form : FormAlignmentOption -> List (Attribute msg) -> List (Html msg) -> Html msg
-form formAlignmentOption attributes htmlList =
+form formAlignmentOption extraAttributes htmlList =
   let
     formAlignmentClass =
       case formAlignmentOption of
         FormDefault -> ""
         FormHorizontal -> "form-horizontal"
         FormInline -> "form-inline"
-    attributes = class formAlignmentClass :: attributes
+    attributes = class formAlignmentClass :: extraAttributes
   in
     Html.form attributes htmlList
 
@@ -93,9 +93,9 @@ formGroup formGroupOption htmlList =
      ]
 -}
 formLabel : List (Attribute msg) -> List (Html msg) -> Html msg
-formLabel attributes htmlList =
+formLabel extraAttributes htmlList =
   let
-    attributes = class "control-label" :: attributes
+    attributes = class "control-label" :: extraAttributes
   in
     label attributes htmlList
 
@@ -110,9 +110,9 @@ formLabel attributes htmlList =
      ]
 -}
 formInput : List (Attribute msg) -> List (Html msg) -> Html msg
-formInput attributes htmlList =
+formInput extraAttributes htmlList =
   let
-    attributes = class "form-control" :: attributes
+    attributes = class "form-control" :: extraAttributes
   in
     input attributes htmlList
 
@@ -127,9 +127,9 @@ formInput attributes htmlList =
      ]
 -}
 formTextArea : List (Attribute msg) -> List (Html msg) -> Html msg
-formTextArea attributes htmlList =
+formTextArea extraAttributes htmlList =
   let
-    attributes = class "form-control" :: attributes
+    attributes = class "form-control" :: extraAttributes
   in
     textarea attributes htmlList
 

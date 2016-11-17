@@ -32,8 +32,8 @@ listGroup htmlList =
      ]
 -}
 listGroupItem : List (Attribute msg) -> List (Html msg) -> Html msg
-listGroupItem attributes htmlList =
-  let attributes = class "list-group-item" :: attributes
+listGroupItem extraAttributes htmlList =
+  let attributes = class "list-group-item" :: extraAttributes
   in
     a attributes htmlList
 

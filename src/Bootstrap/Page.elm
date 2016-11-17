@@ -28,9 +28,9 @@ import String
 automationTag : String -> String -> Attribute msg
 automationTag tag value =
   let
-    tag = "data-uia-" ++ tag
+    dataTag = "data-uia-" ++ tag
   in
-    attribute tag value
+    attribute dataTag value
 
 -- Page
 ----------------------------------------------------------------------------
@@ -40,9 +40,9 @@ automationTag tag value =
     pullRight [] []
 -}
 pullRight : List (Attribute msg) -> List (Html msg) -> Html msg
-pullRight attributes htmlList =
+pullRight extraAttributes htmlList =
   let
-    attributes = class "pull-right" :: attributes
+    attributes = class "pull-right" :: extraAttributes
   in
     div attributes htmlList
 
@@ -51,9 +51,9 @@ pullRight attributes htmlList =
     pageHeader [] []
 -}
 pageHeader : List (Attribute msg) -> List (Html msg) -> Html msg
-pageHeader attributes htmlList =
+pageHeader extraAttributes htmlList =
   let
-    attributes = class "page-header" :: attributes
+    attributes = class "page-header" :: extraAttributes
   in
     div attributes htmlList
 
@@ -62,9 +62,9 @@ pageHeader attributes htmlList =
     jumbotron [] []
 -}
 jumbotron : List (Attribute msg) -> List (Html msg) -> Html msg
-jumbotron attributes htmlList =
+jumbotron extraAttributes htmlList =
   let
-    attributes = class "jumbotron" :: attributes
+    attributes = class "jumbotron" :: extraAttributes
   in
     div attributes htmlList
 

@@ -48,7 +48,7 @@ panelGroup htmlList =
     panel PrimaryPanel [] []
 -}
 panel : PanelType -> List (Attribute msg) -> List (Html msg) -> Html msg
-panel panelType attributes htmlList =
+panel panelType extraAttributes htmlList =
   let
     getPanelTypeClass panelType =
       case panelType of
@@ -61,7 +61,7 @@ panel panelType attributes htmlList =
   in
     let
       panelTypeClass = getPanelTypeClass panelType
-      attributes = class ("panel " ++ panelTypeClass) :: attributes
+      attributes = class ("panel " ++ panelTypeClass) :: extraAttributes
     in
       div attributes htmlList
 
@@ -81,7 +81,7 @@ type PanelHeadingTitleType =
     panelHeading PanelH3 [] []
 -}
 panelHeading : PanelHeadingTitleType -> List (Attribute msg) -> List (Html msg) -> Html msg
-panelHeading panelHeadingTitleType attributes htmlList =
+panelHeading panelHeadingTitleType extraAttributes extraHtmlList =
   let
     getPanelHeadingTitleHtml panelHeadingTitleType =
       case panelHeadingTitleType of
@@ -93,8 +93,8 @@ panelHeading panelHeadingTitleType attributes htmlList =
         PanelH5 content -> h5 [] [ text content ]
 
     panelHeadingTitleHtml = getPanelHeadingTitleHtml panelHeadingTitleType
-    attributes = class "panel-heading" :: attributes
-    htmlList = panelHeadingTitleHtml :: htmlList
+    attributes = class "panel-heading" :: extraAttributes
+    htmlList = panelHeadingTitleHtml :: extraHtmlList
   in
     div attributes htmlList
 
@@ -103,9 +103,9 @@ panelHeading panelHeadingTitleType attributes htmlList =
     panelBody [] []
 -}
 panelBody : List (Attribute msg) -> List (Html msg) -> Html msg
-panelBody attributes htmlList =
+panelBody extraAttributes htmlList =
   let
-    attributes = class "panel-body" :: attributes
+    attributes = class "panel-body" :: extraAttributes
   in
     div attributes htmlList
 

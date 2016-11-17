@@ -30,14 +30,14 @@ type WellOption =
     well WellLarge [] []
 -}
 well : WellOption -> List (Attribute msg) -> List (Html msg) -> Html msg
-well wellOption attributes htmlList =
+well wellOption extraAttributes htmlList =
   let
     wellOptionClass =
       case wellOption of
         WellNormal -> ""
         WellSmall -> "well-sm"
         WellLarge -> "well-lg"
-    attributes = class ("well " ++ wellOptionClass) :: attributes
+    attributes = class ("well " ++ wellOptionClass) :: extraAttributes
   in
     div attributes htmlList
 
