@@ -1,5 +1,5 @@
 # elm-bootstrapify
-Supports Bootstrap 3 and Elm 0.18
+Supports Bootstrap 3 and Elm 0.17-0.18
 ## Purpose
 Elm-bootstrapify aims to elminate bootstrap styling rendering errors using precise type safety techniques.
 ## Installation
