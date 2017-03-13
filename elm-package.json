@@ -1,5 +1,5 @@
 {
-    "version": "8.0.1",
+    "version": "9.0.0",
     "summary": "A collection of functions to use the bootstrap theme when designing html",
     "repository": "https://github.com/JeremyBellows/elm-bootstrapify.git",
     "license": "BSD3",

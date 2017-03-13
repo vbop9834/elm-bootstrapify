@@ -55,7 +55,7 @@ If the diff is desirable, then change the version number of elm-bootrapify in `e
 
 It should look like
 ```
-"JeremyBellows/elm-bootstrapify": "8.0.0 <= v < 9.0.0",
+"JeremyBellows/elm-bootstrapify": "9.0.0 <= v < 10.0.0",
 ```
 
 Execute the following command
