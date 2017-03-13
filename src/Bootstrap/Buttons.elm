@@ -1,6 +1,6 @@
 module Bootstrap.Buttons exposing
   (
-   ButtonOption(BtnDefault, BtnPrimary, BtnSuccess, BtnWarning, BtnInfo, BtnDanger),
+   ButtonOption(BtnDefault, BtnPrimary, BtnSuccess, BtnWarning, BtnInfo, BtnDanger, BtnLink),
    ButtonSizeModifier(BtnLarge, BtnBlock, BtnSmall, BtnExtraSmall, NavbarBtn ),
    ButtonModifier(BtnCollapse),
    btn
@@ -30,6 +30,7 @@ type ButtonOption =
   | BtnWarning
   | BtnInfo
   | BtnDanger
+  | BtnLink
 
 {-|
   A set of sizes for rendering a btn
@@ -85,6 +86,7 @@ btn btnOption btnSizeModifiers btnModifiers attributes htmlList =
         BtnInfo -> "btn-info"
         BtnDanger -> "btn-danger"
         BtnWarning -> "btn-warning"
+        BtnLink -> "btn-link"
     -----------------------------------------------------------------------
     classes =
      "btn " ++ buttonOptionClass ++ " " ++ buttonModifierClasses
