@@ -63,4 +63,4 @@ Execute the following command
 elm package install JeremyBellows/elm-bootstrapify
 ```
 
-[ For further reading, click here to be taken to the elm-package documentation. ] (https://github.com/elm-lang/elm-package#updating-dependencies)
+[For further reading, click here to be taken to the elm-package documentation.](https://github.com/elm-lang/elm-package#updating-dependencies)
