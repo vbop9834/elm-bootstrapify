@@ -1,5 +1,10 @@
+
 # elm-bootstrapify
 Supports Bootstrap 3 and Elm 0.19
+## Compatibility
+Version 10.0.0 of elm-bootstrapify has not been tested with versions < Elm 0.19. If you have issues please open an issue on Github. If things are going smoothly with backwards compatibility, please open an issue with your versions and experience so I can update the Readme. Thank you!
+### Previous Versions are available
+elm-bootstrapify <= 9.0.0 is compatible with previous version of elm. Please check the commit history for the corresponding versions.
 ## Purpose
 Elm-bootstrapify aims to elminate bootstrap styling rendering errors using precise type safety techniques.
 ## Installation
@@ -45,17 +50,17 @@ Before updating, it is recommended to perform a diff of the version you are atte
 
 Navigate to root directory of your project and type
 ```
-elm-package diff JeremyBellows/elm-bootstrapify 2.0.1 9.0.0
+elm-package diff JeremyBellows/elm-bootstrapify 2.0.1 10.0.0
 ```
 
 Be sure to replace 2.0.1 with the version of elm-bootstrapify that is depended on.
-Replace 9.0.0 with the version of elm-bootstrapify that you want to use.
+Replace 10.0.0 with the version of elm-bootstrapify that you want to use.
 
 If the diff is desirable, then change the version number of elm-bootrapify in `elm-package.json`.
 
 It should look like
 ```
-"JeremyBellows/elm-bootstrapify": "9.0.0 <= v < 10.0.0",
+"JeremyBellows/elm-bootstrapify": "10.0.0 <= v < 11.0.0",
 ```
 
 Execute the following command
