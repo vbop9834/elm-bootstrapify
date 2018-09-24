@@ -8,12 +8,12 @@ module Bootstrap.Grid exposing
 
 # Grid
 
-@docs containerFluid, container, row, column
+@docs containerFluid, container, row
 
 
 # Column
 
-@docs ColumnSize, ColumnType, column
+@docs column, ColumnSize, ColumnType
 
 -}
 

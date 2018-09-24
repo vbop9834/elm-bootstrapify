@@ -8,12 +8,12 @@ module Bootstrap.Panels exposing
 
 # Panels
 
-@docs PanelType, panelGroup, panel, panelHeading, panelBody
+@docs PanelType, panelGroup, panel, panelBody
 
 
 # Panel Headings
 
-@docs PanelHeadingTitleType, panelHeading
+@docs panelHeading, PanelHeadingTitleType
 
 -}
 
